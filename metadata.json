@@ -1,0 +1,6 @@
+{
+  "name": "Slide PDF Creator",
+  "description": "An interactive, accessible slide creator with drag-and-drop template elements, real-time preview, customizable fields, minimum 20pt accessibility font-size enforcement, and metadata-driven archiving.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

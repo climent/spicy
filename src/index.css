@@ -1,0 +1,859 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom font utilities for slides */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-space-grotesk {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-playfair-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-jetbrains-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar styling for a cleaner sidebar interface */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* CSS variables for customizable elements */
+.slide-shadow {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   Premium Dark Theme Interface Style Overrides
+   (Leaves Slide Canvas pristine & untouched)
+   ========================================== */
+.dark {
+  color-scheme: dark;
+}
+
+.dark #app-root-layout {
+  background-color: #090d16 !important;
+  color: #f1f5f9;
+}
+
+/* Sidebar Dark Mode Panels */
+.dark #sidebar-container {
+  background-color: #0d111c !important;
+  border-color: #334155 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark #app-header {
+  border-color: #334155 !important;
+}
+
+.dark #app-header h1 {
+  color: #ffffff !important;
+}
+
+.dark #sidebar-tabs {
+  border-color: #334155 !important;
+  background-color: rgba(13, 17, 28, 0.6) !important;
+}
+
+.dark #sidebar-tabs button {
+  color: #64748b !important;
+}
+
+.dark #sidebar-tabs button:hover {
+  color: #f1f5f9 !important;
+}
+
+.dark #sidebar-tabs button[id^="tab-"].text-indigo-600 {
+  color: #818cf8 !important;
+  border-color: #818cf8 !important;
+}
+
+/* Sidebar contents and draggable template styles */
+.dark #sidebar-container .bg-slate-50,
+.dark #sidebar-container .bg-slate-50\/50,
+.dark #sidebar-container .bg-slate-100\/50,
+.dark #sidebar-container .bg-slate-100 {
+  background-color: #162032 !important;
+  border-color: #334155 !important;
+}
+
+.dark #sidebar-container .bg-white {
+  background-color: #111a2e !important;
+  border-color: #334155 !important;
+}
+
+.dark #sidebar-container h3,
+.dark #sidebar-container h4,
+.dark #sidebar-container span,
+.dark #sidebar-container p,
+.dark #sidebar-container label {
+  color: #cbd5e1;
+}
+
+.dark #sidebar-container .text-slate-900,
+.dark #sidebar-container .text-slate-800,
+.dark #sidebar-container .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+.dark #sidebar-container .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark #sidebar-container .text-slate-500,
+.dark #sidebar-container .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+.dark #sidebar-container input,
+.dark #sidebar-container select,
+.dark #sidebar-container textarea {
+  background-color: #111a2e !important;
+  border-color: #475569 !important;
+  color: #ffffff !important;
+}
+
+.dark #sidebar-container .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+.dark #sidebar-container .border-indigo-200 {
+  border-color: #4f46e5 !important;
+}
+
+/* Higher contrast for New Deck button in dark mode */
+.dark #sidebar-new-deck-btn {
+  background-color: #1e1b4b !important;
+  border-color: #6366f1 !important;
+  color: #e0e7ff !important;
+}
+
+.dark #sidebar-new-deck-btn:hover {
+  background-color: #312e81 !important;
+  border-color: #818cf8 !important;
+  color: #ffffff !important;
+}
+
+/* Canvas Workspace Overrides */
+.dark #canvas-workspace {
+  background-color: #060911 !important;
+}
+
+.dark #canvas-header h2 {
+  color: #ffffff !important;
+}
+
+.dark #canvas-header .bg-white {
+  background-color: #111a2e !important;
+  border-color: #475569 !important; /* high contrast border */
+}
+
+/* Crisp high-contrast slide indicator text in dark mode */
+.dark #canvas-header #deck-slide-counter {
+  color: #f8fafc !important;
+}
+
+.dark #canvas-header .text-slate-800,
+.dark #canvas-header .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark #canvas-header button {
+  background-color: #111a2e !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark #canvas-header button:hover {
+  background-color: #16223b !important;
+  color: #ffffff !important;
+  border-color: #4f46e5 !important;
+}
+
+.dark #canvas-header button:disabled {
+  opacity: 0.25 !important;
+}
+
+.dark #canvas-workspace .slide-shadow {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Inspector Editor Panel Overrides */
+.dark [id^="element-editor-panel-"],
+.dark #no-element-selected-panel {
+  background-color: #0d111c !important;
+  border-color: #334155 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark #inspector-header {
+  border-color: #334155 !important;
+  background-color: rgba(22, 31, 48, 0.4) !important;
+}
+
+.dark #inspector-header h4 {
+  color: #ffffff !important;
+}
+
+.dark [id^="element-editor-panel-"] h3,
+.dark [id^="element-editor-panel-"] h4,
+.dark [id^="element-editor-panel-"] label,
+.dark [id^="element-editor-panel-"] p,
+.dark [id^="element-editor-panel-"] span {
+  color: #cbd5e1;
+}
+
+.dark [id^="element-editor-panel-"] .text-slate-900,
+.dark [id^="element-editor-panel-"] .text-slate-800,
+.dark [id^="element-editor-panel-"] .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+.dark [id^="element-editor-panel-"] .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark [id^="element-editor-panel-"] .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark [id^="element-editor-panel-"] .text-slate-400 {
+  color: #ffffff !important;
+}
+
+/* Add higher-contrast styles for slate borders globally in light mode */
+.border-slate-100,
+.border-slate-150,
+.border-slate-200,
+.border-slate-300 {
+  border-color: #cbd5e1 !important; /* crisp high contrast light grey */
+}
+
+/* Light mode content editor and sidebar overrides for crisp contrast and hover highlights */
+#sidebar-container input,
+#sidebar-container select,
+#sidebar-container textarea,
+[id^="element-editor-panel-"] input,
+[id^="element-editor-panel-"] select,
+[id^="element-editor-panel-"] textarea {
+  border-color: #cbd5e1 !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out !important;
+}
+
+#sidebar-container button:not([id*="color-preset"]),
+#backup-import-label,
+[id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]) {
+  border-color: #cbd5e1 !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out !important;
+}
+
+/* Light Mode Hover Highlight */
+#sidebar-container input:not([type="range"]):hover,
+#sidebar-container select:hover,
+#sidebar-container textarea:hover,
+[id^="element-editor-panel-"] input:not([type="range"]):hover,
+[id^="element-editor-panel-"] select:hover,
+[id^="element-editor-panel-"] textarea:hover {
+  border-color: #6366f1 !important; /* Prominent Indigo border on hover */
+  background-color: #f8fafc !important; /* Smooth light background lift */
+}
+
+#sidebar-container button:not([id*="color-preset"]):not(:disabled):hover,
+#backup-import-label:hover,
+[id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]):not(:disabled):hover {
+  border-color: #6366f1 !important;
+  background-color: #f5f3ff !important;
+  color: #4f46e5 !important;
+}
+
+/* Light Mode Focus Highlight */
+#sidebar-container input:not([type="range"]):focus,
+#sidebar-container select:focus,
+#sidebar-container textarea:focus,
+[id^="element-editor-panel-"] input:not([type="range"]):focus,
+[id^="element-editor-panel-"] select:focus,
+[id^="element-editor-panel-"] textarea:focus {
+  border-color: #4f46e5 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+  outline: none !important;
+}
+
+#sidebar-container button:not([id*="color-preset"]):not(:disabled):focus,
+[id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]):not(:disabled):focus {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+  outline: none !important;
+}
+
+.dark [id^="element-editor-panel-"] input,
+.dark [id^="element-editor-panel-"] select,
+.dark [id^="element-editor-panel-"] textarea {
+  background-color: #111a2e !important;
+  border-color: #475569 !important;
+  color: #ffffff !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out !important;
+}
+
+/* Dark Mode Hover Highlight */
+.dark #sidebar-container input:not([type="range"]):hover,
+.dark #sidebar-container select:hover,
+.dark #sidebar-container textarea:hover,
+.dark [id^="element-editor-panel-"] input:not([type="range"]):hover,
+.dark [id^="element-editor-panel-"] select:hover,
+.dark [id^="element-editor-panel-"] textarea:hover {
+  border-color: #6366f1 !important; /* Indigo 500 border on hover */
+  background-color: #162032 !important; /* Slightly lighter dark slate hover */
+}
+
+/* Dark Mode Focus Highlight */
+.dark #sidebar-container input:not([type="range"]):focus,
+.dark #sidebar-container select:focus,
+.dark #sidebar-container textarea:focus,
+.dark [id^="element-editor-panel-"] input:not([type="range"]):focus,
+.dark [id^="element-editor-panel-"] select:focus,
+.dark [id^="element-editor-panel-"] textarea:focus {
+  border-color: #818cf8 !important; /* Bright high-contrast indigo highlight */
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3) !important;
+  background-color: #0f172a !important; /* Focused dark background */
+  outline: none !important;
+}
+
+.dark [id^="element-editor-panel-"] .bg-slate-50,
+.dark [id^="element-editor-panel-"] .bg-slate-100 {
+  background-color: #162032 !important;
+  border-color: #475569 !important;
+}
+
+.dark [id^="element-editor-panel-"] .bg-white {
+  background-color: #111a2e !important;
+  border-color: #475569 !important;
+}
+
+.dark [id^="grid-item-editor-"] {
+  background-color: #090e1a !important;
+  border-color: #475569 !important;
+}
+
+/* Segmented Alignment Control Groups (Slide Alignment & Text Alignment) */
+/* Ensure hand cursor (standard pointer) on hover for all alignment and export preset selector buttons */
+#slide-align-group button:not(:disabled),
+#align-btns-group button:not(:disabled),
+#sidebar-export-footer button:not(:disabled) {
+  cursor: pointer !important;
+}
+
+/* Light Mode - Highlight selected box with Indigo 500 border matching hover color */
+#slide-align-group button.bg-indigo-50,
+#align-btns-group button.bg-indigo-50,
+#sidebar-export-footer button.bg-indigo-50 {
+  border-color: #6366f1 !important; /* Beautiful Indigo 500 border matching hover highlight */
+  color: #4f46e5 !important; /* Rich active text/icon color */
+  box-shadow: 0 1px 3px rgba(99, 102, 241, 0.15) !important;
+}
+
+#slide-align-group button.bg-indigo-50:hover,
+#align-btns-group button.bg-indigo-50:hover,
+#sidebar-export-footer button.bg-indigo-50:hover {
+  background-color: #f5f3ff !important;
+  border-color: #4f46e5 !important;
+  color: #4338ca !important;
+}
+
+.dark #slide-align-group,
+.dark #align-btns-group {
+  background-color: #162032 !important;
+  border-color: #475569 !important;
+}
+
+/* Inactive button state in Segmented Control Groups */
+.dark #slide-align-group button,
+.dark #align-btns-group button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #94a3b8 !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+/* Inactive button hover state in Segmented Control Groups: Highlight with a beautiful indigo border and background */
+.dark #slide-align-group button:not(.bg-indigo-50):hover,
+.dark #align-btns-group button:not(.bg-indigo-50):hover {
+  background-color: #1e1b4b !important; /* Rich deep indigo-900 background */
+  border-color: #6366f1 !important; /* Beautiful Indigo 500 border highlight on hover */
+  color: #ffffff !important;
+}
+
+/* Active button state in Segmented Control Groups */
+.dark #slide-align-group button.bg-indigo-50,
+.dark #align-btns-group button.bg-indigo-50 {
+  background-color: #1e1b4b !important;
+  border-color: #6366f1 !important;
+  color: #a5b4fc !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Active button hover state in Segmented Control Groups */
+.dark #slide-align-group button.bg-indigo-50:hover,
+.dark #align-btns-group button.bg-indigo-50:hover {
+  background-color: #312e81 !important;
+  color: #ffffff !important;
+  border-color: #818cf8 !important;
+}
+
+/* --- Color Override Selector Buttons Styling & Consistency --- */
+/* Ensure transition smoothness and custom cursor */
+button[id*="color-preset-btn-"] {
+  transition: transform 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+/* Light Mode: Selected Color Preset Button Hover State */
+button[id*="color-preset-btn-"].ring-2:hover {
+  transform: scale(1.08) !important;
+  --tw-ring-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px #4f46e5, 0 4px 10px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* Light Mode: Unselected Color Preset Button Hover State */
+button[id*="color-preset-btn-"]:not(.ring-2):hover {
+  transform: scale(1.08) !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Dark Mode overrides for Color Preset Buttons */
+.dark button[id*="color-preset-btn-"]:not(.ring-2) {
+  border-color: #475569 !important;
+}
+
+/* Dark Mode: Selected Color Preset Button Hover State */
+.dark button[id*="color-preset-btn-"].ring-2:hover {
+  transform: scale(1.08) !important;
+  --tw-ring-color: #818cf8 !important;
+  box-shadow: 0 0 0 3px #818cf8, 0 4px 14px rgba(129, 140, 248, 0.45) !important;
+}
+
+/* Dark Mode: Unselected Color Preset Button Hover State */
+.dark button[id*="color-preset-btn-"]:not(.ring-2):hover {
+  transform: scale(1.08) !important;
+  border-color: #818cf8 !important;
+  box-shadow: 0 2px 10px rgba(129, 140, 248, 0.25) !important;
+}
+
+/* Custom Color Inputs Hover State */
+input[id*="custom-color-input-"],
+input[id*="custom-heading-color-input-"] {
+  transition: transform 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+input[id*="custom-color-input-"]:hover,
+input[id*="custom-heading-color-input-"]:hover {
+  transform: scale(1.05) !important;
+  border-color: #6366f1 !important;
+}
+
+.dark input[id*="custom-color-input-"]:hover,
+.dark input[id*="custom-heading-color-input-"]:hover {
+  border-color: #818cf8 !important;
+}
+
+.dark [id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]) {
+  background-color: #111a2e !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out !important;
+}
+
+/* Global Dark Mode Indigo Accent styling for custom buttons & inputs (e.g., Export Presets, Alignment toggles) */
+.dark .bg-indigo-50,
+.dark button.bg-indigo-50,
+.dark input.bg-indigo-50 {
+  background-color: #1e1b4b !important;
+  color: #e0e7ff !important;
+}
+
+.dark .border-indigo-200,
+.dark .border-indigo-600,
+.dark button.border-indigo-200,
+.dark button.border-indigo-600 {
+  border-color: #6366f1 !important;
+}
+
+.dark .text-indigo-700,
+.dark button.text-indigo-700,
+.dark .text-indigo-600,
+.dark button.text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+.dark #sidebar-container button:not([id*="color-preset"]):not(:disabled):hover,
+.dark #backup-import-label:hover,
+.dark [id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]):not(:disabled):hover {
+  border-color: #6366f1 !important;
+  background-color: #1e1b4b !important; /* Rich deep indigo-900 background */
+  color: #ffffff !important;
+}
+
+.dark #sidebar-container button:not([id*="color-preset"]):not(:disabled):focus,
+.dark [id^="element-editor-panel-"] button:not([id*="color-preset"]):not([id*="delete-element-btn"]):not(:disabled):focus {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3) !important;
+  outline: none !important;
+}
+
+.dark .bg-indigo-50:hover,
+.dark button.bg-indigo-50:hover,
+.dark button.border-indigo-600:hover {
+  background-color: #312e81 !important;
+  color: #ffffff !important;
+}
+
+/* Map light-mode slate borders to higher-contrast borders globally in dark mode */
+.dark .border-slate-100,
+.dark .border-slate-150,
+.dark .border-slate-200,
+.dark .border-slate-300 {
+  border-color: #475569 !important;
+}
+
+.dark [id^="element-editor-panel-"] button:disabled {
+  opacity: 0.25 !important;
+}
+
+/* Lock, Warn, and Expiry banner overrides */
+.dark .bg-amber-500 {
+  background-color: #b45309 !important;
+}
+
+/* Custom Badge and Tag Contrast Enhancements for Active, Archived and Locked Statuses */
+span[id^="deck-status-active-"],
+span#font-size-locked-badge {
+  background-color: #ecfdf5 !important; /* Soft emerald backdrop */
+  border: 1px solid #a7f3d0 !important; /* Defined light emerald border */
+  color: #065f46 !important; /* High-contrast deep forest green text */
+}
+
+span[id^="deck-status-archived-"] {
+  background-color: #fffbeb !important; /* Soft amber backdrop */
+  border: 1px solid #fde68a !important; /* Defined light amber border */
+  color: #92400e !important; /* High-contrast deep amber text */
+}
+
+.dark span[id^="deck-status-active-"],
+.dark span#font-size-locked-badge {
+  background-color: #022c22 !important; /* Deepest forest green backdrop */
+  border: 1px solid #059669 !important; /* High-visibility medium emerald border */
+  color: #34d399 !important; /* Extremely high-contrast bright mint/emerald text */
+}
+
+.dark span[id^="deck-status-archived-"] {
+  background-color: #451a03 !important; /* Deepest amber/brown backdrop */
+  border: 1px solid #d97706 !important; /* High-visibility amber border */
+  color: #fbbf24 !important; /* Extremely high-contrast bright amber/yellow text */
+}
+
+/* Modals */
+.dark #export-progress-modal .bg-white {
+  background-color: #0d111c !important;
+  border: 1px solid #334155;
+}
+
+.dark #export-progress-modal h3 {
+  color: #ffffff !important;
+}
+
+.dark #export-progress-modal p {
+  color: #94a3b8 !important;
+}
+
+.dark #export-progress-modal .bg-slate-150 {
+  background-color: #162032 !important;
+}
+
+/* Strict exemption: Never touch the color or styles of actual active slide render container or its descendants */
+.dark [id^="slide-render-"] {
+  /* Retain inline-style properties strictly */
+}
+
+.dark [id^="slide-render-"] * {
+  /* Ignore global text/background overrides */
+}
+
+/* --- Layout Templates, Add Slide Elements & Apply Slide Theme Interactive Hover Highlights --- */
+
+/* 1. Light Mode Styles */
+#templates-list > div,
+#elements-list > div,
+#themes-grid > button {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: #cbd5e1 !important; /* Crisp high-contrast light default border */
+  transition: all 0.15s ease-in-out !important;
+}
+
+#templates-list > div:not(.opacity-50):hover,
+#elements-list > div:not(.opacity-50):hover,
+#themes-grid > button:not(:disabled):hover {
+  border-color: #6366f1 !important; /* Beautiful Indigo 500 */
+  background-color: #f5f3ff !important; /* Soft premium lavender backdrop */
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12), 0 0 0 3px rgba(99, 102, 241, 0.2) !important; /* Polished active focus glow */
+}
+
+#templates-list > div:not(.opacity-50):hover span,
+#elements-list > div:not(.opacity-50):hover span,
+#themes-grid > button:not(:disabled):hover span {
+  color: #4f46e5 !important; /* Vibrant high-contrast purple-indigo text on hover */
+}
+
+/* 2. Dark Mode Styles */
+.dark #templates-list > div,
+.dark #elements-list > div,
+.dark #themes-grid > button {
+  background-color: #111a2e !important;
+  border-color: #475569 !important; /* Higher contrast default slate border for dark mode */
+}
+
+/* Ensure layout template boxes have high contrast base color */
+.dark #templates-list > div {
+  background-color: #162032 !important;
+}
+
+.dark #templates-list > div:not(.opacity-50):hover,
+.dark #elements-list > div:not(.opacity-50):hover,
+.dark #themes-grid > button:not(:disabled):hover {
+  border-color: #818cf8 !important; /* Bright high-visibility Indigo 400 */
+  background-color: #1e1b4b !important; /* Deep rich Indigo 900 background */
+  box-shadow: 0 4px 14px rgba(129, 140, 248, 0.25), 0 0 0 3px rgba(129, 140, 248, 0.3) !important; /* Bright ambient dark glow */
+}
+
+.dark #templates-list > div:not(.opacity-50):hover span,
+.dark #elements-list > div:not(.opacity-50):hover span,
+.dark #themes-grid > button:not(:disabled):hover span {
+  color: #ffffff !important; /* Pure white text on hover */
+}
+
+/* Refine mini mockups inside templates during hover in dark mode */
+.dark #templates-list > div:not(.opacity-50):hover .bg-white,
+.dark #templates-list > div:not(.opacity-50):hover .bg-slate-50 {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+/* --- Slide Counter Navigation Arrows Hover Highlights --- */
+
+/* 1. Light Mode Styles */
+#deck-move-left-btn,
+#deck-move-right-btn {
+  border: 1px solid transparent !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+#deck-move-left-btn:not(:disabled):hover,
+#deck-move-right-btn:not(:disabled):hover {
+  background-color: #f5f3ff !important; /* soft lavender backdrop */
+  border-color: #6366f1 !important; /* Beautiful Indigo 500 border highlight */
+  color: #4f46e5 !important; /* bright active indigo text */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important; /* subtle focus ring on hover */
+}
+
+#deck-move-left-btn:not(:disabled):active,
+#deck-move-right-btn:not(:disabled):active {
+  background-color: #ede9fe !important;
+  transform: scale(0.9) !important;
+}
+
+/* 2. Dark Mode Styles */
+.dark #deck-move-left-btn,
+.dark #deck-move-right-btn {
+  background-color: transparent !important; /* keep flat inside counter container */
+  border: 1px solid transparent !important;
+  color: #cbd5e1 !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.dark #deck-move-left-btn:not(:disabled):hover,
+.dark #deck-move-right-btn:not(:disabled):hover {
+  background-color: #1e1b4b !important; /* deep rich indigo background */
+  border-color: #818cf8 !important; /* bright high-visibility Indigo 400 */
+  color: #818cf8 !important; /* vibrant high-contrast indigo icon */
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.35) !important; /* strong glow indicator */
+}
+
+.dark #deck-move-left-btn:not(:disabled):active,
+.dark #deck-move-right-btn:not(:disabled):active {
+  background-color: #312e81 !important;
+  transform: scale(0.9) !important;
+}
+
+
+/* --- Canvas Action Buttons (Duplicate & Delete) Hover Highlights --- */
+
+/* 1. Light Mode Styles */
+#deck-duplicate-btn,
+#deck-delete-btn {
+  transition: all 0.15s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+#deck-duplicate-btn:hover {
+  background-color: #f5f3ff !important; /* soft lavender backdrop */
+  border-color: #6366f1 !important; /* Indigo 500 border highlight */
+  color: #4f46e5 !important; /* Indigo 600 text color */
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12), 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+}
+
+#deck-delete-btn:not(:disabled):hover {
+  background-color: #fef2f2 !important; /* soft red backdrop */
+  border-color: #ef4444 !important; /* Red 500 border highlight */
+  color: #dc2626 !important; /* Red 600 text color */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12), 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* 2. Dark Mode Styles */
+.dark #deck-duplicate-btn {
+  background-color: #111a2e !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark #deck-duplicate-btn:hover {
+  background-color: #1e1b4b !important; /* deep rich indigo background */
+  border-color: #818cf8 !important; /* bright high-visibility Indigo 400 */
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(129, 140, 248, 0.25), 0 0 0 2px rgba(129, 140, 248, 0.3) !important;
+}
+
+.dark #deck-delete-btn {
+  background-color: #111a2e !important;
+  border-color: #334155 !important;
+  color: #fca5a5 !important; /* Light red */
+}
+
+.dark #deck-delete-btn:not(:disabled):hover {
+  background-color: #7f1d1d !important; /* Rich dark red background */
+  border-color: #ef4444 !important; /* Red 500 */
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25), 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+
+/* --- Export PDF & ZIP Buttons Hover Styling & Alignment --- */
+
+#sidebar-container #sidebar-export-pdf-btn,
+#sidebar-container #sidebar-export-zip-btn {
+  border: 1px solid transparent !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+/* 1. Light Mode Styles */
+#sidebar-container #sidebar-export-pdf-btn:not(:disabled):hover {
+  background-image: linear-gradient(to right, #4338ca, #5b21b6) !important; /* shift gradient darker on hover */
+  border-color: #4f46e5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2), 0 0 0 2px rgba(79, 70, 229, 0.25) !important;
+}
+
+#sidebar-container #sidebar-export-zip-btn:not(:disabled):hover {
+  background-image: linear-gradient(to right, #047857, #0f766e) !important; /* shift gradient darker on hover */
+  border-color: #059669 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2), 0 0 0 2px rgba(5, 150, 105, 0.25) !important;
+}
+
+/* 2. Dark Mode Styles */
+.dark #sidebar-container #sidebar-export-pdf-btn:not(:disabled):hover {
+  background-image: linear-gradient(to right, #3730a3, #4c1d95) !important;
+  border-color: #818cf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(129, 140, 248, 0.3), 0 0 0 2px rgba(129, 140, 248, 0.35) !important;
+}
+
+.dark #sidebar-container #sidebar-export-zip-btn:not(:disabled):hover {
+  background-image: linear-gradient(to right, #064e3b, #115e59) !important;
+  border-color: #34d399 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.3), 0 0 0 2px rgba(52, 211, 153, 0.35) !important;
+}
+
+/* --- Filmstrip Container & Slide Cards Hover Halo Styles --- */
+
+/* Slide Cards Hover Halo in Light and Dark mode */
+[id^="filmstrip-slide-card-"],
+#filmstrip-add-slide-btn {
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out !important;
+}
+
+[id^="filmstrip-slide-card-"]:hover {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+#filmstrip-add-slide-btn:not(:disabled):hover {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4) !important;
+}
+
+.dark [id^="filmstrip-slide-card-"]:hover {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.45) !important;
+}
+
+.dark #filmstrip-add-slide-btn:not(:disabled):hover {
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.55) !important;
+}
+
+/* --- Element Inspector Delete Button Styles --- */
+
+button[id^="delete-element-btn-"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important; /* border-slate-300 */
+  color: #dc2626 !important; /* Red 600 */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important; /* shadow-sm */
+  transition: all 0.15s ease-in-out !important;
+}
+
+button[id^="delete-element-btn-"]:not(:disabled):hover {
+  background-color: #fef2f2 !important; /* soft red backdrop */
+  border-color: #ef4444 !important; /* Red 500 border highlight */
+  color: #dc2626 !important; /* Red 600 text color */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12), 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+.dark button[id^="delete-element-btn-"] {
+  background-color: #111a2e !important;
+  border-color: #334155 !important;
+  color: #fca5a5 !important; /* Light red */
+}
+
+.dark button[id^="delete-element-btn-"]:not(:disabled):hover {
+  background-color: #7f1d1d !important; /* Rich dark red background */
+  border-color: #ef4444 !important; /* Red 500 */
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25), 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+

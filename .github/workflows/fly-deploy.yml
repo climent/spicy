@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy to Fly (single machine)
-        working-directory: playa-info
+        working-directory: .
         # --ha=false stops Fly from provisioning a standby machine; `scale count 1`
         # converges an existing app to exactly one machine. This preview does not
         # need a high-availability pair.

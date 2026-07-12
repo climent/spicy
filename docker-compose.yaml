@@ -5,7 +5,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - "3000:8080"
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+      - PORT=8080
+      - BASIC_AUTH_USER=${BASIC_AUTH_USER:-preview}
+      # Set BASIC_AUTH_PASSWORD in a local .env file (gitignored). The container
+      # refuses to start if it is missing.
+      - BASIC_AUTH_PASSWORD=${BASIC_AUTH_PASSWORD:?set BASIC_AUTH_PASSWORD in .env}

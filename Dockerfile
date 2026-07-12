@@ -15,22 +15,28 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the static files with Nginx
+# Stage 2: Serve the static files with Nginx behind HTTP Basic Auth
 FROM nginx:stable-alpine
+
+# apache2-utils provides `htpasswd`, used by the entrypoint to build the
+# password file from runtime secrets.
+RUN apk add --no-cache apache2-utils
 
 # Copy built static assets from the build stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Overwrite default Nginx config to support client-side routing (SPA history fallback)
-RUN echo 'server { \
-    listen 80; \
-    location / { \
-        root /usr/share/nginx/html; \
-        index index.html index.htm; \
-        try_files $uri $uri/ /index.html; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+# SPA config with a ${PORT} placeholder. The nginx image renders templates in
+# /etc/nginx/templates/ via envsubst into /etc/nginx/conf.d/ at startup, which
+# overrides the image's default.conf.
+COPY nginx/default.conf.template /etc/nginx/templates/default.conf.template
 
-EXPOSE 80
+# Generates /etc/nginx/.htpasswd from BASIC_AUTH_USER / BASIC_AUTH_PASSWORD
+# before nginx launches (and fails fast if the password is missing).
+COPY docker-entrypoint.d/40-htpasswd.sh /docker-entrypoint.d/40-htpasswd.sh
+RUN chmod +x /docker-entrypoint.d/40-htpasswd.sh
+
+# Port nginx listens on; matches Fly's internal_port. Override via env if needed.
+ENV PORT=8080
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]

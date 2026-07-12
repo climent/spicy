@@ -1,0 +1,25 @@
+# Fly.io config for the password-gated prototype.
+# Deploy:  fly launch --no-deploy --copy-config   (pick an app name + region)
+#          fly secrets set BASIC_AUTH_PASSWORD='your-shared-password'
+#          fly deploy
+# The BASIC_AUTH_PASSWORD is a Fly secret and is deliberately NOT stored here.
+
+app = "ranger-playa-info"    # Fly app name
+primary_region = "sea"       # change to a region near your reviewers
+
+[build]
+  dockerfile = "Dockerfile"
+
+# Single-machine preview: fly.toml has no machine-count field, so the count is
+# enforced in the deploy workflow via `fly deploy --ha=false` and `fly scale
+# count 1`. Bump those (and min_machines_running) if you later want redundancy.
+[http_service]
+  internal_port = 8080       # matches ENV PORT and nginx's listen directive
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0   # set to 1 to avoid cold starts during a feedback round
+
+[env]
+  PORT = "8080"
+  BASIC_AUTH_USER = "preview"

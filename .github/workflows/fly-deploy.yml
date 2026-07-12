@@ -1,0 +1,45 @@
+name: Deploy playa-info to Fly
+
+# Rebuilds and deploys the playa-info container to Fly.io. Fly runs the Docker
+# build on its own remote builders (--remote-only), so this works from GitHub's
+# runners regardless of any local network restrictions.
+#
+# One-time setup:
+#   1. Create a deploy token:  fly tokens create deploy -x 8760h
+#   2. Add it as a repo secret named FLY_API_TOKEN
+#      (Settings -> Secrets and variables -> Actions -> New repository secret)
+#   3. Make sure `app` in playa-info/fly.toml matches your real Fly app name.
+#
+# BASIC_AUTH_PASSWORD is NOT set here — it stays a Fly secret
+# (`fly secrets set BASIC_AUTH_PASSWORD=...`) and persists across deploys.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**'
+  workflow_dispatch: {}
+
+# Never run two deploys of the same app at once.
+concurrency:
+  group: fly-deploy-playa-info
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: fly deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy to Fly (single machine)
+        working-directory: playa-info
+        # --ha=false stops Fly from provisioning a standby machine; `scale count 1`
+        # converges an existing app to exactly one machine. This preview does not
+        # need a high-availability pair.
+        run: |
+          flyctl deploy --remote-only --ha=false
+          flyctl scale count 1 --yes
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

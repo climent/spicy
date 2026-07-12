@@ -653,6 +653,16 @@ export default function SlideCanvas({
           })}
         </div>
       </div>
+
+      {/* Build Version Tag */}
+      <div className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl flex justify-end px-1 mt-1 shrink-0">
+        <span
+          id="preview-build-version"
+          className="text-[10px] font-mono text-slate-400 select-none pointer-events-none opacity-60"
+        >
+          {((import.meta as any).env?.VITE_COMMIT_HASH) || "dev"}
+        </span>
+      </div>
     </div>
   );
 }
